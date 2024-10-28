@@ -1,39 +1,109 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP AW #4 : Formulaire avec fonctionnalités HTML5</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <script src="js/gps.js" defer></script>
+    <script src="js/store.js" defer></script>
+    <script src="js/form-validation.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Formulaire</h3>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TP4</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Formulaire -->
+      <form id="contact-form">
+        <!-- Nom -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            onkeyup="calcNbChar(this.id)"
+          />
+          <span></span>
+        </div>
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+        <!-- Prénom -->
+        <div class="mb-3">
+          <label for="firstname" class="form-label">Prénom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstname"
+            onkeyup="calcNbChar(this.id)"
+          />
+          <span></span>
+        </div>
 
-    <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-    </style>
+        <!-- Date de naissance -->
+        <div class="mb-3">
+          <label for="birthdate" class="form-label">Date de naissance</label>
+          <input type="date" class="form-control" id="birthdate" />
+        </div>
 
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="main.js"></script>-->
-</head>
+        <!-- Adresse -->
+        <div class="mb-3">
+          <label for="address" class="form-label">Adresse</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            onkeyup="calcNbChar(this.id)"
+          />
+          <span></span>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="getLocation()"
+          >
+            GPS
+          </button>
+        </div>
 
-<body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP4
-    </nav>
-    <h1>TP4</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
-</body>
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Adresse Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            onkeyup="calcNbChar(this.id)"
+          />
+          <span></span>
+        </div>
 
+        <!-- Bouton Ajouter -->
+        <button type="button" class="btn btn-primary" onclick="addContact()">
+          Ajouter
+        </button>
+        <button type="button" class="btn btn-danger" onclick="resetContacts()">
+          Réinitialiser
+        </button>
+      </form>
+
+      <!-- Map pour la géolocalisation -->
+      <div id="map" class="my-4"></div>
+
+      <!-- Tableau des contacts -->
+      <h3>Liste des contacts</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date de naissance</th>
+            <th>Adresse</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Les contacts seront ajoutés ici dynamiquement -->
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
